@@ -1,7 +1,34 @@
 name: Deploy to Vercel
 description: Deploy to Vercel
+
 runs:
   using: 'node20'
   main: src/index.js
 
+inputs:
+  vercel-token:
+    description: 'Vercel access token.'
+    required: true
+  vercel-org-id:
+    description: 'Vercel organization ID.'
+    required: true
+  vercel-project-id:
+    description: 'Vercel project ID.'
+    required: true
+  vercel-env:
+    description: 'Vercel environment to deploy to.'
+    required: true
+    default: 'preview'
+  prebuilt:
+    description: 'Deploy a prebuilt project (default: false)'
+    required: false
+  alias-domains:
+    description: 'Alias domains'
+    required: false
+  build-env:
+    description: 'Provide environment variables to the build step.'
+    required: false
 
+outputs:
+  deployment-url:
+    description: 'The URL of the deployment.'
